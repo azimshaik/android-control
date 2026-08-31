@@ -1,0 +1,9 @@
+{
+  "floors": {
+    "garage": {
+      "pressure": 0.0,
+      "samples": 0
+    }
+  },
+  "note": "Example only. Run scripts/calibrate_floors.py to build a real calibration."
+}

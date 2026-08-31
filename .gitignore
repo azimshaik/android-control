@@ -1,0 +1,15 @@
+# runtime / personal
+config.json
+data/calibration.json
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# os / editor
+.DS_Store
+*.swp
+
+# history / state (user data lives outside the repo by default)
+~/.adb-sentinel/

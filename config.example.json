@@ -1,0 +1,17 @@
+{
+  "device": {
+    "state_file": "~/.adb-sentinel/device.state",
+    "target": ""
+  },
+  "home": {
+    "lat": 0.0,
+    "lon": 0.0,
+    "name": "Home"
+  },
+  "floors": {
+    "calibration_file": "data/calibration.json"
+  },
+  "history": {
+    "csv": "~/.adb-sentinel/history.csv"
+  }
+}

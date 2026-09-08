@@ -10,10 +10,10 @@ Wi-Fi signal. It is designed to run headless on a cron timer and report to
 Telegram/anywhere a script can print.
 
 ```text
-📱 192.168.86.180:44609
-🔋 99% · 27.4°C · not charging
-📍 41.36806,-82.05715 · fused ±17m, fix 8d old
-🌡️ 990.45 hPa → floor: 1st_floor (Δ+0.00 hPa, confident)
+📱 192.168.1.50:5555        ← your device's wireless-debugging target
+🔋 87% · 31.2°C · charging
+📍 40.7128,-74.0060 · fused ±20m · fix 2h old   (example output)
+🌡️ 990.45 hPa → floor: 1st_floor (Δ+0.00 hPa)
 🚶 STILL (100%)
 📶 Wi-Fi RSSI -17 dBm
 ```
@@ -28,7 +28,7 @@ things for a device you own:
 
 - **Battery health over time** — level, temperature, and Samsung's ASOC wear
   figure, logged every few hours to spot degradation.
-- **Floor-level location** — the phone's barometer (lps22hh on the S23) is
+- **Floor-level location** — the phone's barometer (lps22hh) is
   sampled in short bursts by Google Play Services every ~2 minutes; the values
   sit in the sensorservice ring buffer, free to read. ~0.12 hPa per meter ⇒
   adjacent floors (~3 m) are easy to tell apart.
@@ -59,7 +59,7 @@ python3 scripts/sample_once.py
 python3 scripts/calibrate_floors.py
 
 # full report (battery + location + floor + activity)
-python3 scripts/s23_report.py
+python3 scripts/report.py
 ```
 
 `config.json` is gitignored — home coordinates and device targets stay local.
@@ -85,7 +85,7 @@ report as uncertain rather than confidently wrong.
 Cron (macOS/Linux):
 
 ```cron
-0 */4 * * *  cd /path/to/adb-sentinel && python3 scripts/s23_report.py >> ~/.adb-sentinel/history.log 2>&1
+0 */4 * * *  cd /path/to/adb-sentinel && python3 scripts/report.py >> ~/.adb-sentinel/history.log 2>&1
 ```
 
 The report also appends a CSV row (time, level, temp, lat, lon, fix age,
@@ -110,7 +110,7 @@ to protect yourself.
 
 - [ ] Room-level Wi-Fi RSSI fingerprinting
 - [ ] Alert rules (battery < 20%, phone left home, floor changed while away)
-- [ ] Home-automation triggers (phone enters garage → open garage door)
+- [ ] Home-automation triggers (arrival / room events → lights, alerts)
 - [ ] Historical charts from the CSV log
 
 ## License

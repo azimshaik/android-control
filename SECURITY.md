@@ -12,7 +12,7 @@ interface is effectively root-lite for many purposes:
 - **Read data**: SMS, WhatsApp (via backup + key extraction), photos, files,
   app data on debuggable apps, notifications, clipboard.
 - **Inject input**: type anything into any app (banking, UPI, messaging),
-  tap buttons, approve dialogs — the PhonePe/PIN flows people script are
+  tap buttons, approve dialogs — the payment/PIN flows people automate are
   exactly what an attacker would script.
 - **Exfiltrate**: `adb pull` any accessible file; screen-record and
   screencap protected screens on some devices.

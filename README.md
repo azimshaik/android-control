@@ -64,6 +64,15 @@ python3 scripts/report.py
 
 `config.json` is gitignored — home coordinates and device targets stay local.
 
+## How a query flows
+
+```
+You (Telegram, anywhere) → Hermes (your machine) → adb-sentinel → your phone (wireless ADB)
+```
+
+Ask "what's the battery?" from Telegram and watch it travel end to end —
+[full annotated sequence diagram](docs/QUERY_FLOW.md).
+
 ## How floor detection works
 
 Air pressure drops ~0.12 hPa per meter of altitude; US home floors are
